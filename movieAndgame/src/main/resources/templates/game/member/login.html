@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{movie/default}">
+	layout:decorate="~{game/default}">
 	
 <head>
 	<title layout:fragment="title">로그인</title>
 </head>	
 	<div layout:fragment="main" id="main">
-		<form method="post" th:action="@{/movie/signIn}" th:object="${member}">
+		<form method="post" th:action="@{/game/signIn}" th:object="${member}">
 			<div id = "formData">
 				<div class = "inputField">
 					<input type = "text" th:field="*{email}">

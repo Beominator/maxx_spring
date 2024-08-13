@@ -2,9 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{game/default}">
+	
+	
 <head>
-	<title layout:fragment="title">게임 톡톡</title>
+	<title layout:fragment="title">게임 회원가입</title>
+	
+	<th:block layout:fragment="css"></th:block>
+	<th:block layout:fragment="script">
+		<script src="/js/join.js"></script>
+	</th:block>
 </head>	
+
 	<div layout:fragment="main" id="main">
 		
 	</div>

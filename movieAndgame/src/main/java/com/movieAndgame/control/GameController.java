@@ -5,31 +5,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.movieAndgame.Dto.MovieMember;
+import com.movieAndgame.Dto.GameMember;
+
 
 @Controller
-@RequestMapping("/movie")
-public class MovieController {
+@RequestMapping("/game")
+public class GameController {
 
-	// "/"은 localhost/movie/index 매핑이다.
 	@GetMapping("/index")
 	public String Home(Model model) {
 		
-		return "movie/index";
+		return "game/index";
 	}
 	
 	@GetMapping("/login")
 	public String loginHome(Model model) {
 		
-		model.addAttribute("member", new MovieMember());
+		model.addAttribute("member", new GameMember());
 		
-		return "movie/member/login";
-	}
-	
-	// 회원가입 페이지 요청
-	@GetMapping("/signUp")
-	public String signUp(Model model) {
-		
-		return "movie/member/join";
+		return "game/member/login";
 	}
 }
