@@ -5,6 +5,18 @@
 	
 <head>
 	<title layout:fragment="title">로그인</title>
+	<th:block layout:fragment="script">
+		<script src="/js/game_login.js"></script>
+		
+		
+		
+	</th:block>
+	
+	<th:block th:if="${fail}">
+		<script th:inline="javascript">
+			alert("아이디 또는 비밀번호가 잘못 되었습니다.")
+		</script>
+	</th:block>
 </head>	
 	<div layout:fragment="main" id="main">
 		<form method="post" th:action="@{/game/signIn}" th:object="${member}">
@@ -22,6 +34,10 @@
 				</div>
 			</div>
 		</form>
+		<div id="forget_new">
+			<a href="">아이디/비밀번호찾기</a>
+			<a href="signUp">회원가입</a>
+		</div>
 	</div>
 		
 

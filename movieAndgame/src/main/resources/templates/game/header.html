@@ -5,7 +5,7 @@
 	<div id="nav">
 		<ul id="menuList">
 			<li><a href=""></a>PC게임</li>
-			<li><a href="/game/m"></a>모바일</li>
+			<li><a href="/gamePost/m">모바일</a></li>
 			<li><a href=""></a>콘솔</li>
 			<li><a href=""></a>MakeByMe</li>
 			<li><a href=""></a>불만게임</li>
@@ -13,8 +13,12 @@
 		<div id="userALogo">
 			<div class="userbox">
 				<span class="loginLink">
-					<a th:href="@{/game/login}">로그인</a>
-				</span>
+					<th:block th:if="${session.user != null}">
+					<b th:text="${#session.getAttribute('user').name}"></b>
+							<a href="/game/logout">로그아웃</a>
+						</th:block>
+						<a th:unless="${session.user != null}" th:href="@{/game/login}">로그인</a>
+					</span>
 				<span class="userService">고객센터</span>
 			</div>
 			<div class="logo"></div>
