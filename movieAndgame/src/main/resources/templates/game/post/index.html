@@ -11,12 +11,23 @@
 	<div layout:fragment="main" id="main">
 		
 		<div id="section_top">
-			<h3>최소 클리어타임 작성 후기</h3>
+			<h3>최소 클리어타임 후기 작성</h3>
 			<p> <a href="/gamePost/postWrite">공략 작성</a></p>
 		</div>
 		
 		<div id="section_middle">
 			<table id="postList">
+				<tr>
+					<th class= "num">번호</th>
+					<th class= "title">제목</th>
+					<th class="date">작성일</th>
+				</tr>
+				
+				<tr th:each="row : ${postList}">
+					<td class="num" th:text="${row.post_id}"></td>
+					<td class="title"><a th:href="@{'/gamePost/post/'+${row.post_id}}" th:text="${row.title}"></a></td>
+					<td class="date" th:text="${#temporals.format(row.write_date, 'yyyy-MM-dd')}"></td>
+				</tr>
 			</table>
 		</div>
 		

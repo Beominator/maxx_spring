@@ -1,5 +1,7 @@
 package com.movieAndgame.control;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -8,10 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.movieAndgame.Dto.GameMember;
 import com.movieAndgame.Dto.GamePostDto;
+import com.movieAndgame.Dto.MovieReviewDto;
 import com.movieAndgame.service.GamePostService;
 
 
@@ -35,8 +39,13 @@ public class GamePostControl {
 	@GetMapping("/m")
 	public String postMain(Model model) {
 		
+		List<GamePostDto> list = postService.postlist();
+		model.addAttribute("postList", list);
+		
 		return "game/post/index";
 	}
+	
+	
 	
 	// 리뷰작성 페이지 요청
 	@GetMapping("/postWrite")
@@ -55,5 +64,15 @@ public class GamePostControl {
 		model.addAttribute("gamePostDto",dto);
 		
 		return "game/post/write";
-	}
+		}
+		
+		@GetMapping("/post/{id}")
+		public String post(@PathVariable("id") int id, Model model) {
+			
+			GamePostDto dto = postService.findById(id);
+			model.addAttribute("gamePostDto", dto);
+			
+			return "game/post/detail";
+		}
+	
 }

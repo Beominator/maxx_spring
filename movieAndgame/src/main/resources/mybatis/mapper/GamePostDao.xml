@@ -3,10 +3,20 @@
 
 <mapper namespace="com.movieAndgame.Dao.GamePostDaoImpl">
 
+	<select id="findById" resultType="com.movieAndgame.Dto.GamePostDto">
+		select * from game_post where post_id=#{id}
+	</select>
+
+	<select id="findAll" resultType="com.movieAndgame.Dto.GamePostDto">
+		select * from game_post order by write_date desc
+		
+		/* mybatis 태그 내부 주석 */
+	</select>
+
 	<insert id="postSave" parameterType="com.movieAndgame.Dto.GamePostDto">
 		insert into game_post(writer, title, game_name, target_post, write_date)
 		values
-		(#{writer}, #{title}, #{gameName}, #{targetPost}, now())
+		(#{writer}, #{title}, #{game_name}, #{target_post}, now())
 	
 	
 	</insert>
